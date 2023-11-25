@@ -1,0 +1,33 @@
+<odoo>
+    <data>
+        <!-- Tree View For Vendor Forecast-->
+           <record model="ir.ui.view" id="vendor_forecast_tree_view">
+            <field name="name">Vendor Forecast List</field>
+            <field name="model">vendor.forecast</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="product_id"/>
+                    <field name="expected_quantity"/>
+                    <field name="forecast_date"/>
+                </tree>
+            </field>
+        </record>
+
+        <!--Action for Vendor Forecast-->
+        <record id="vendor_forecast_action" model="ir.actions.act_window">
+            <field name="name">Vendor Forecast</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">vendor.forecast</field>
+            <field name="view_mode">tree</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    No Record's Are Available
+                </p>
+            </field>
+        </record>
+
+<!--        Action Menu For Vendor Forecast Request-->
+        <menuitem id="vendor_forecast_action_id" name="Vendor Forecast" action="vendor_forecast_action"  parent="vendor_self_service_portal.vendor_self_service_portal_config" groups="base.group_user"/>
+
+  </data>
+</odoo>

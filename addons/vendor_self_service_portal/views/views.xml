@@ -1,0 +1,56 @@
+<odoo>
+    <data>
+        <!--    Sub Menu-->
+        <menuitem id="vendor_self_service_portal_config"
+            name="Vendor Self Service Portal"
+            parent="sale.sale_menu_root"
+            groups="base.group_user"/>
+
+        <!-- Tree View For Vendor Adjustment Request-->
+           <record model="ir.ui.view" id="vendor_adjustment_request_tree_view">
+            <field name="name">Vendor Adjustment Request List</field>
+            <field name="model">vendor.adjustment.request</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="order_id"/>
+                    <field name="adjustment_detail"/>
+                    <field name="comment"/>
+                </tree>
+            </field>
+        </record>
+
+        <!--       Form View For Vendor Adjustment Request -->
+        <record id="vendor_adjustment_request_form_view" model="ir.ui.view">
+            <field name="name">vendor.adjustment.request.form</field>
+            <field name="model">vendor.adjustment.request</field>
+            <field name="arch" type="xml">
+                <form string="package">
+                    <sheet>
+                        <group>
+                            <field name="order_id"/>
+                            <field name="adjustment_detail"/>
+                            <field name="comment"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!--Action for Vendor Adjustment Request-->
+        <record id="vendor_adjustment_request_action" model="ir.actions.act_window">
+            <field name="name">Vendor Adjustment Request</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">vendor.adjustment.request</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    No Record's Are Available
+                </p>
+            </field>
+        </record>
+
+<!--        Action Menu For Vendor Adjustment Request-->
+        <menuitem id="vendor_adjustment_request_action_id" name="Vendor Adjustment Request" action="vendor_adjustment_request_action"  parent="vendor_self_service_portal.vendor_self_service_portal_config" groups="base.group_user"/>
+
+  </data>
+</odoo>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="OrderSummary" t-inherit="point_of_sale.OrderSummary" t-inherit-mode="extension" owl="1">
+        <xpath expr="//div[hasclass('summary')]//div[hasclass('line')]//div[hasclass('entry')]" position="inside">
+            <div class="subentry">
+                SubTotal:
+                <span class="value">
+                    <t t-esc="getSubTotalPrice()" />
+                </span>
+            </div>
+        </xpath>
+    </t>
+    <t t-name="OrderSummary" t-inherit="point_of_sale.OrderReceipt" t-inherit-mode="extension" owl="1">
+        <xpath expr="//div[hasclass('pos-receipt')]//div[hasclass('pos-receipt-amount')]" position="replace">
+            <div class="pos-receipt-amount">
+                SUBTOTAL
+                <span t-esc="env.pos.format_currency(receipt.sub_total)" class="pos-receipt-right-align"/>
+
+                TOTAL
+                <span t-esc="env.pos.format_currency(receipt.total_with_tax)" class="pos-receipt-right-align"/>
+            </div>
+
+
+        </xpath>
+    </t>
+</templates>
